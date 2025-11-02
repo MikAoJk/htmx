@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTMX Static Demo - Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-uHnNsa1onVbW2kSgLuiYq4J8i8X3G3u8dD5F5T0bH0GQnEz8MZtG7Dq5qP5hJQ2M" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('htmx:beforeRequest', () => {
+      document.getElementById('loading-indicator').hidden = false;
+    });
+    document.addEventListener('htmx:afterOnLoad', () => {
+      document.getElementById('loading-indicator').hidden = true;
+    });
+    document.addEventListener('htmx:responseError', (e) => {
+      document.getElementById('loading-indicator').hidden = true;
+      alert("Load failed: " + e.detail.xhr.status);
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Static HTMX Demo</h1>
+    <nav hx-boost="true" hx-push-url="true" hx-select="main" hx-target="main" hx-swap="outerHTML">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div id="loading-indicator" hidden>Loading…</div>
+  </header>
+
+  <main>
+    <h2>Welcome</h2>
+    <p>This is the home page. Navigation links will progressively enhance to partial swaps of the <code>&lt;main&gt;</code> region.</p>
+
+    <section id="latest-news"
+             hx-get="partials/news.html"
+             hx-trigger="load"
+             hx-swap="innerHTML">
+      <h3>Latest News</h3>
+      <p class="placeholder">Loading news…</p>
+    </section>
+
+    <section>
+      <h3>Dynamic Component Reload</h3>
+      <div id="time-box"
+           class="time-box"
+           hx-get="partials/time.html"
+           hx-trigger="load"
+           hx-swap="outerHTML">
+        <em>Loading current time…</em>
+      </div>
+      <button hx-get="partials/time.html"
+              hx-target="#time-box"
+              hx-swap="outerHTML">
+        Refresh Time
+      </button>
+    </section>
+
+    <section>
+      <h3>Load Another Partial Manually</h3>
+      <button hx-get="partials/news.html"
+              hx-target="#manual-partial"
+              hx-swap="innerHTML">
+        Load News Again
+      </button>
+      <div id="manual-partial" class="partial-box"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Demo</small>
+  </footer>
+</body>
+</html>
