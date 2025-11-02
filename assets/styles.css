@@ -1,0 +1,113 @@
+:root {
+  --bg: #121417;
+  --fg: #eceff4;
+  --accent: #5e81ac;
+  --accent-hover: #81a1c1;
+  --border: #2e3440;
+  --muted: #7d8694;
+  --danger: #bf616a;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: #1e2227;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+h1 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+nav a {
+  color: var(--fg);
+  text-decoration: none;
+  padding: .4rem .75rem;
+  border-radius: .4rem;
+  font-size: .95rem;
+  display: inline-block;
+  transition: background .15s;
+}
+nav a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+}
+nav a:hover:not([aria-current="page"]) {
+  background: #2a3037;
+}
+#loading-indicator {
+  font-size: .8rem;
+  color: var(--accent);
+  animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+main {
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+  max-width: 900px;
+  margin: 0 auto;
+}
+h2, h3 { margin-top: 0; }
+.placeholder { color: var(--muted); }
+.news-list {
+  list-style: square;
+  padding-left: 1.2rem;
+  margin: .5rem 0 0;
+}
+.time-box {
+  margin: .5rem 0 1rem;
+  padding: .75rem 1rem;
+  background: #1e242b;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+}
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: .6rem 1rem;
+  border-radius: .4rem;
+  cursor: pointer;
+  font: inherit;
+  transition: background .15s;
+}
+button:hover { background: var(--accent-hover); }
+button:disabled {
+  background: #3b4250;
+  cursor: not-allowed;
+}
+.partial-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #1b2025;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  min-height: 3rem;
+}
+footer {
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+  border-top: 1px solid var(--border);
+  background: #161a1e;
+}
+code {
+  background: #1e242b;
+  padding: .15rem .4rem;
+  border-radius: .3rem;
+  font-size: .85em;
+}
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
