@@ -1,0 +1,15 @@
+<div id="time-box" class="time-box">
+  <strong>Current Time (client fetch):</strong>
+  <div>
+    <!-- Because this is static, the "dynamic" time is actually when the file was fetched -->
+    <code>
+      <!-- HTMX just pulled this file; we can use a tiny inline script to show client time -->
+      <span id="time-value"></span>
+      <script>
+        document.currentScript.previousElementSibling.textContent =
+          new Date().toLocaleString();
+      </script>
+    </code>
+  </div>
+  <small>Reload this component with the "Refresh Time" button.</small>
+</div>
