@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTMX Static Demo - About</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Static HTMX Demo</h1>
+    <nav hx-boost="true" hx-push-url="true" hx-select="main" hx-target="main" hx-swap="outerHTML">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>About This Demo</h2>
+    <p>This static site uses HTMX to load only the <code>&lt;main&gt;</code> tag when navigating internal links.</p>
+    <ul>
+      <li>No custom server code—just flat files.</li>
+      <li><code>hx-select="main"</code> extracts only the main content out of full HTML responses.</li>
+      <li><code>hx-boost="true"</code> upgrades normal links to AJAX requests automatically.</li>
+    </ul>
+    <p>Even if JavaScript fails, links still work as normal full page loads.</p>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Demo</small>
+  </footer>
+</body>
+</html>
