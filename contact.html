@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTMX Static Demo - Contact</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Static HTMX Demo</h1>
+    <nav hx-boost="true" hx-push-url="true" hx-select="main" hx-target="main" hx-swap="outerHTML">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Contact</h2>
+    <p>Because this is a static example, the form below does not submit anywhere; you can adapt it to a backend later.</p>
+
+    <form hx-post="/not-real" hx-disable="true">
+      <label>
+        Name
+        <input name="name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="4"></textarea>
+      </label>
+      <button type="submit" disabled>Submit (demo only)</button>
+    </form>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Demo</small>
+  </footer>
+</body>
+</html>
